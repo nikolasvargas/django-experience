@@ -15,9 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from accounts.views import home
+from accounts import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home)
+    path('home/', views.home),
+    path('', views.listing, name='list-transactions'),
+    path('new/', views.new_transaction, name='new-transaction'),
+    path('update/<int:pk>/', views.update_transaction, name='update-transaction')
 ]
