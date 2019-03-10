@@ -22,6 +22,7 @@ urlpatterns = [
     path('home/', views.home),
     path('', views.listing, name='list-transactions'),
     path('new/', views.new_transaction, name='new-transaction'),
+    path('category/', views.new_category, name='new-category'),
     path('update/<int:pk>/', views.update_transaction, name='update-transaction'),
     path('delete/<int:pk>/', views.delete_transaction, name='delete-transaction')
 ]
