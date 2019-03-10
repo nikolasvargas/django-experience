@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from datetime import datetime
 from accounts.models import Transaction
-from accounts.forms import TransactionForm
+from accounts.forms import TransactionForm, CategoryForm
 
 
 def home(request):
@@ -16,6 +16,17 @@ def listing(request):
     data = {}
     data['transactions'] = Transaction.objects.all()
     return render(request, 'accounts/listing.html', data)
+
+
+def new_category(request):
+    data = {}
+    data['category_form'] = CategoryForm(request.POST or None)
+
+    if data['category_form'].is_valid():
+        data['category_form'].save()
+        return redirect('list-transactions')
+
+    return render(request, 'accounts/category_form.html', data)
 
 
 def new_transaction(request):
