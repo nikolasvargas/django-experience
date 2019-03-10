@@ -12,6 +12,9 @@
    {{ form.as_p }}
    <button type="submit">Save</button>
    <a href="{% url 'list-transactions' %}">show transactions</a>
+   {% if transaction %}
+     <a href="{% url 'delete-transaction' transaction.id %}">remove transaction</a>
+   {% endif %}
  </form>
 </body>
 </html>

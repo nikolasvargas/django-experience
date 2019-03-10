@@ -39,4 +39,11 @@ def update_transaction(request, pk):
         return redirect('list-transactions')
 
     data['form'] = form
+    data['transaction'] = transaction
     return render(request, 'accounts/form.html', data)
+
+
+def delete_transaction(request, pk):
+    transaction = Transaction.objects.get(pk=pk)
+    transaction.delete()
+    return redirect('list-transactions')
